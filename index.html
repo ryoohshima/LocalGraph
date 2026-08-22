@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      通信先はライセンス検証エンドポイント 1 つのみに固定する（docs/02-security-policy.md 条件 1）。
+      本番では同等の内容を HTTP レスポンスヘッダーでも配信すること（meta 版は一部ディレクティブが無効なため）。
+      TODO: license エンドポイント確定後に connect-src の URL を差し替える。
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>LocalGraph</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
