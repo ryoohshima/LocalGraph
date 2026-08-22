@@ -19,11 +19,11 @@
 | 領域 | 採用 | 備考 |
 | --- | --- | --- |
 | フロントエンド | 静的サイト（SSG / Static Export） | サーバーサイド処理を持たない |
-| CSV パース | PapaParse | 文字コード判定・ストリーミング対応 |
+| CSV パース | PapaParse | ストリーミング対応。**文字コード判定は行わないため自前で実装する**（[06-design.md](./06-design.md) §6） |
 | Excel パース | SheetJS または exceljs | 日付シリアル値の扱いに注意 |
 | ローカル DB | IndexedDB（Dexie.js） | |
-| 集計 | **素の JS または Arquero** | 下記参照 |
-| 可視化 | Chart.js または Apache ECharts | |
+| 集計 | **素の JS** | 下記参照 |
+| 可視化 | **Apache ECharts** | ヒートマップと dataZoom が標準搭載。選定理由は [06-design.md](./06-design.md) §8 |
 | オフライン | Service Worker (PWA) | |
 
 ### 3.1 DuckDB-Wasm は初期採用しない
@@ -45,7 +45,7 @@ CSP で通信先を 1 ドメインに固定するため、フォント・ライ�
 ### A. データ入力・解析
 
 - CSV / `.xlsx` のドラッグ＆ドロップ読み込み
-- Shift-JIS / UTF-8 等の文字コード自動判別
+- Shift-JIS / UTF-8 の文字コード自動判別（TextDecoder による自前判定）
 - ヘッダー列の自動抽出とプレビュー表示
 
 ### B. 列マッピング

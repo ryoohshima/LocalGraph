@@ -11,6 +11,8 @@
 | [03-monetization.md](./03-monetization.md) | 課金モデル・料金設計 |
 | [04-architecture.md](./04-architecture.md) | 技術スタック方針と機能要件 |
 | [05-feasibility.md](./05-feasibility.md) | 事業性の判断・リスク・撤退基準 |
+| [06-design.md](./06-design.md) | 全体設計（構造・データモデル・技術判断） |
+| [07-roadmap.md](./07-roadmap.md) | 実装フェーズの定義と完了条件 |
 
 ## 前提
 
