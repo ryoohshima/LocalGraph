@@ -23,7 +23,10 @@ db.version(1).stores({
  * それを超えて読み込みが重くなったら datasetRows を { datasetId, chunkIndex, rows } の
  * チャンク分割へ移行する。
  */
-export function saveDataset(dataset: Dataset, rows: unknown[][]): Promise<void> {
+export function saveDataset(
+  dataset: Dataset,
+  rows: unknown[][],
+): Promise<void> {
   return db.transaction("rw", db.datasets, db.datasetRows, async () => {
     await db.datasets.put(dataset);
     await db.datasetRows.put({ datasetId: dataset.id, rows });
